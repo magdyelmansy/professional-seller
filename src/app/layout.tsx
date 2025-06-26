@@ -1,6 +1,32 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { ClerkProvider, SignedIn, SignOutButton } from '@clerk/nextjs'
+// import { arSA } from "@clerk/localizations";
 import "./globals.css";
+import Link from "next/link";
+
+const localization = {
+  signIn: {
+    start: {
+      titleCombined: '{{applicationName}}',
+      title: '{{applicationName}}',
+      subtitle: '',
+     
+    },
+     password: {
+        title: ' ادخل كلمة المرور',
+        subtitle: 'ادخل كلمة المرور الخاصة بك لتسجيل الدخول' ,
+      }
+  },
+  formFieldLabel__emailAddress: 'البريد الالكتروني',
+  formFieldInputPlaceholder__emailAddress: 'ادخل بريدك الالكتروني',
+  formFieldLabel__password: 'كلمة المرور',
+  formFieldInputPlaceholder__password: 'ادخل كلمة المرور الخاصة بك',
+  formFieldAction__forgotPassword: 'نسيت كلمة المرور؟',
+  formButtonPrimary: 'تسجيل الدخول',
+
+
+}
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,12 +49,32 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
+    <ClerkProvider
+      localization={localization}
+    >
+      <html lang="en">
+        <body
+
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          {/* <AuthActions /> */}
+          <SignedIn>
+            <div className="h-[75px] flex justify-end p-4 gap-2">
+              <Link href="/home" className="bg-teal-500 text-white px-4 py-2 rounded hover:bg-teal-600 transition">الصفحه الرئيسيه</Link>
+              <Link href="/admin" className="bg-teal-500 text-white px-4 py-2 rounded hover:bg-teal-600 transition">قائمه المقدمين</Link>
+              <SignOutButton>
+                <button className="bg-red-500 text-white px-4 py-2 rounded cursor-pointer hover:bg-red-600">
+                  سجّل خروج
+                </button>
+              </SignOutButton>
+            </div>
+          </SignedIn>
+          <div className="w-9/10 mx-auto h-full">
+            {children}
+          </div>
+
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
