@@ -23,8 +23,15 @@ export default function DetailsForm() {
     }
 
     return (
-
         <div className="max-w-6xl mx-auto bg-white rounded-xl overflow-hidden shadow-md grid grid-cols-1 md:grid-cols-3">
+            <div className="md:col-span-1 bg-gradient-to-br from-gray-900 to-black text-white p-8 flex items-center justify-center text-center">
+                <div>
+                    <h2 className="text-xl font-bold mb-4">سجّل الآن وابدئي رحلتك!</h2>
+                    <p className="text-sm leading-loose">
+                        هل أنتِ مستعدة لتطوير مهاراتكِ والحصول على دخل إضافي في بيئة داعمة ومحفزة؟ املئي نموذج التسجيل وسيتواصل معكِ فريق البرنامج خلال أيام قليلة.
+                    </p>
+                </div>
+            </div>
             {/* Form Section */}
             <div className="p-8 md:col-span-2">
                 <h2 className="text-2xl font-bold mb-6 text-right">تسجيل</h2>
@@ -75,14 +82,7 @@ export default function DetailsForm() {
             </div>
 
             {/* Text Section */}
-            <div className="md:col-span-1 bg-gradient-to-br from-gray-900 to-black text-white p-8 flex items-center justify-center text-center">
-                <div>
-                    <h2 className="text-xl font-bold mb-4">سجّل الآن وابدئي رحلتك!</h2>
-                    <p className="text-sm leading-loose">
-                        هل أنتِ مستعدة لتطوير مهاراتكِ والحصول على دخل إضافي في بيئة داعمة ومحفزة؟ املئي نموذج التسجيل وسيتواصل معكِ فريق البرنامج خلال أيام قليلة.
-                    </p>
-                </div>
-            </div>
+
         </div>
 
     );
